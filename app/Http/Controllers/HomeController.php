@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('main');
+        return view('dashboard');
     }
 
     /**
@@ -43,31 +43,12 @@ class HomeController extends Controller
      *     )
      * )
      *
-     * Show the main page.
+     * Show the dashboard page.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function paginaInicial()
     {
-        return view('main');
-    }
-
-    /**
-     * @OA\Get(
-     *     path="/api/home/teste",
-     *     summary="Mostrar a página de teste",
-     *     tags={"Home"},
-     *     @OA\Response(
-     *         response=200,
-     *         description="Sucesso",
-     *         @OA\JsonContent()
-     *     )
-     * )
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function teste()
-    {
-        return view('teste');
+        return view('dashboard');
     }
 }

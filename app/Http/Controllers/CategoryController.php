@@ -35,8 +35,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return response()->json($categories);
+        $categories = Category::all();                
+        return view('categories.index', compact('categories'));        
+        // return response()->json($categories);
+    }
+
+    public function create()
+    {
+        return view('categories.create');
     }
 
     /**
@@ -72,7 +78,15 @@ class CategoryController extends Controller
 
         $category = Category::create($request->all());
 
-        return response()->json($category, Response::HTTP_CREATED);
+        return redirect()->route('categories.index')
+            ->with('success', 'Categoria criada com sucesso.');
+
+        // return response()->json($category, Response::HTTP_CREATED);
+    }
+
+    public function edit(Category $category)
+    {
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -101,7 +115,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return response()->json($category);
+        return view('categories.show', compact('category'));
+        // return response()->json($category);
     }
 
     /**
@@ -145,7 +160,9 @@ class CategoryController extends Controller
 
         $category->update($request->all());
 
-        return response()->json($category);
+        return redirect()->route('categories.index')
+        ->with('success', 'Categoria atualizada com sucesso.');
+        // return response()->json($category);
     }
 
     /**
@@ -175,6 +192,8 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return response()->noContent();
+        return redirect()->route('categories.index')
+        ->with('success', 'Categoria excluída com sucesso.');
+        // return response()->noContent();
     }
 }

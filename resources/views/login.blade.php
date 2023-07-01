@@ -3,6 +3,8 @@
 <head>
   <title>SmartPantry - Login</title>
   <link href="{{ asset('css/estiloslogin.css') }}" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+
 </head>
 <body>
   <header class="header">
@@ -12,24 +14,36 @@
 
   <main class="main-content">
 	<div id="center-content">
+    @if ($errors->any())
+      <div class="alert alert-danger mt-4">
+        <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+     @endif
     <form class="login-form" action="{{ route('login') }}" method="post">
       @csrf
       <input type="email" name="email" placeholder="Email" required>
       <input type="password" name="password" placeholder="Senha" required>
       <button type="submit" class="login-button">Entrar</button>
-    </form>
-
-    <p class="register-link">Ainda não possui uma conta? <a href="{{ route('register') }}">Registre-se</a></p>
-    
+    </form>    
     
     <div class="oauth-section">
       <p>Ou faça login com:</p>
       <div class="oauth-buttons">        
-        <a href="{{ route('oauth.redirect', ['provider' => 'google']) }}" class="oauth-button google">Google</a>        
-        <a href="{{ route('oauth.redirect', ['provider' => 'github']) }}" class="oauth-button github">Github</a>
+        <button type="button" onclick="window.location.href='{{ route('oauth.redirect', ['provider' => 'google']) }}'" class="oauth-button google btn btn-primary btn-google d-block">
+          <i class="fab fa-google"></i> Google
+        </button>        
+        <button type="button" onclick="window.location.href='{{ route('oauth.redirect', ['provider' => 'github']) }}'" class="oauth-button github btn btn-secondary btn-github d-block">
+          <i class="fab fa-github"></i> Github
+        </button>
       </div>
     </div>
-    
+    <p class="register-link">Ainda não possui uma conta? <a href="{{ route('register') }}">Registre-se</a></p>    
+
+
 	</div>
   </main>
 

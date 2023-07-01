@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -28,6 +30,17 @@ class LoginController extends Controller
         
         return redirect()->intended('/home');
     }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/home');
+        } else {
+            return redirect()->back()->withErrors(['message' => 'Credenciais inválidas']);
+        }
+    }    
 
     public function logout()
     {

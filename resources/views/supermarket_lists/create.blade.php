@@ -2,60 +2,64 @@
 
 @section('content')
 <div class="col-lg-10 col-md-9 content">
-    <div class="container">
-        <h1>Criar Lista de Compras</h1>
+    <div class="container d-flex justify-content-center">
+        <div class="card">
+            <div class="card-body p-5">
+                <h1 class="pb-5">Criar Lista de Compras</h1>
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
+                @if ($errors->any())
+                <div class="alert alert-danger p-4">
+                    <ul>
+                        @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                <form method="POST" action="{{ route('supermarket_lists.store') }}">
+                    @csrf
+
+                    <div class="form-group pb-3">
+                        <label for="list_name">Nome da Lista</label>
+                        <input type="text" class="form-control" id="list_name" name="list_name" required>
+                    </div>
+
+                    <div class="form-group pb-3">
+                        <label for="product">Produto</label>
+                        <input type="text" list="products" class="form-control" id="product">
+                        <datalist id="products">
+                            @foreach ($products as $product)
+                            <option value="{{ $product->id }}">{{ $product->product_name }}</option>
+                            @endforeach
+                        </datalist>
+                    </div>
+
+                    <div class="form-group pb-3">
+                        <label for="product_quantity">Quantidade</label>
+                        <input type="number" class="form-control" id="product_quantity">
+                    </div>
+
+                    <button type="button" class="btn btn-primary my-3" id="add_product">Adicionar Produto à Lista</button>
+
+                    <hr>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="product_table_body">
+                        </tbody>
+                    </table>
+
+                    <button type="submit" class="btn btn-primary">Criar Lista de Compras</button>
+                </form>
             </div>
-        @endif
-
-        <form method="POST" action="{{ route('supermarket_lists.store') }}">
-            @csrf
-
-            <div class="form-group">
-                <label for="list_name">Nome da Lista</label>
-                <input type="text" class="form-control" id="list_name" name="list_name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="product">Produto</label>
-                <input type="text" list="products" class="form-control" id="product">
-                <datalist id="products">
-                    @foreach ($products as $product)
-                        <option value="{{ $product->id }}">{{ $product->product_name }}</option>
-                    @endforeach
-                </datalist>
-            </div>
-
-            <div class="form-group">
-                <label for="product_quantity">Quantidade</label>
-                <input type="number" class="form-control" id="product_quantity">
-            </div>
-
-            <button type="button" class="btn btn-primary" id="add_product">Adicionar Produto à Lista</button>
-
-            <hr>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Produto</th>
-                        <th>Quantidade</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="product_table_body">
-                </tbody>
-            </table>
-
-            <button type="submit" class="btn btn-primary">Criar Lista de Compras</button>
-        </form>
+        </div>
     </div>
 
     <script>
@@ -92,11 +96,10 @@
             function getProductById(productId) {
                 return products.find(product => product.id === parseInt(productId));
             }
-
-            function removeProduct(button) {
+        });
+        function removeProduct(button) {
                 button.closest('tr').remove();
             }
-        });
     </script>
 </div>
 @endsection

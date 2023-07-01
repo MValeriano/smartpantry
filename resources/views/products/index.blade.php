@@ -11,7 +11,9 @@
     @endif
     
     <a href="{{ route('products.create') }}" class="btn btn-primary">Criar Novo Produto</a>
-    
+    <div class="card mt-3">
+    <div class="card-body">
+
     @if (count($products) > 0)
         <table class="table">
             <thead>
@@ -47,5 +49,7 @@
     @else
         <p>Nenhum produto cadastrado.</p>
     @endif
+    </div>
+    </div>
 </div>
 @endsection

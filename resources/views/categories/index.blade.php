@@ -12,6 +12,8 @@
     
     <a href="{{ route('categories.create') }}" class="btn btn-primary">Criar Categoria</a>
     
+    <div class="card mt-3">
+    <div class="card-body">    
     <table class="table">
         <thead>
             <tr>
@@ -39,5 +41,7 @@
             @endforeach
         </tbody>
     </table>
+    </div>
+</div>
 </div>
 @endsection

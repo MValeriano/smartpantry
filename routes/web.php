@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmporiumController;
 use App\Http\Controllers\EmporiumProductController;
+use App\Http\Controllers\LarderController;
 
 // Rotas abertas
 Route::get('/', function () {
@@ -19,6 +20,8 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/login/{provider}', [LoginController::class, 'redirectToProvider'])->name('oauth.redirect');
 Route::get('/login/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('oauth.callback');
@@ -32,8 +35,7 @@ Route::post('/register', [UserController::class, 'register']);
 // Rotas protegidas
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/main', [HomeController::class, 'paginaInicial'])->name('main');
-    Route::get('/teste', [HomeController::class, 'teste'])->name('teste');
+    Route::get('/dashboard', [HomeController::class, 'paginaInicial'])->name('dashboard');
 
     Route::resource('categories', CategoryController::class)->middleware('auth');
 
@@ -72,5 +74,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/EmporiumProduct/{emporium}/edit', [EmporiumProductController::class, 'edit'])->name('EmporiumProduct.edit')->middleware('auth');
     Route::put('/EmporiumProduct/{emporium}', [EmporiumProductController::class, 'update'])->name('EmporiumProduct.update')->middleware('auth');
     Route::delete('/EmporiumProduct/{emporium}', [EmporiumProductController::class, 'destroy'])->name('EmporiumProduct.destroy')->middleware('auth');
+
+    Route::resource('larders', LarderController::class);
 });
 // Fim das Rotas protegidas
