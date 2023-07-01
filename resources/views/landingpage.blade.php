@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link href="{{ asset('public/css/estiloslandingpage.css') }}" rel="stylesheet"> 
+  <link href="{{ asset('css/estiloslandingpage.css') }}" rel="stylesheet"> 
   <title>SmartPantry - Organize, planeje e economize.</title>
 
 </head>
@@ -12,7 +12,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
-        <img src="{{ asset('public/images/logoSmartPantry.jpg') }}" alt="SmartPantry Logo">
+        <img src="{{ asset('images/logoSmartPantry.jpg') }}" alt="SmartPantry Logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,7 +47,7 @@
 
 		<div class="row">
 		  <div class="col-md-5">
-			<img src="{{ asset('public/images/img01.jpg') }}" alt="Benefício 1">
+			<img src="{{ asset('images/img01.jpg') }}" alt="Benefício 1">
 		  </div>
 		  <div class="col-md-7 d-flex align-items-center">
 			<p class="p-3 text-dark rounded">Não esqueça nenhum item e não compre mais do que necessita. O SmartPantry te ajuda a economizar tempo e dinheiro.</p>          
@@ -59,13 +59,13 @@
 			<p class="p-3 text-dark rounded">O inventário da despensa permite que você acompanhe o que tem em casa, como especiarias e itens essenciais, para que você sempre saiba o que falta.</p>
 		  </div>
 		  <div class="col-md-6">
-			<img src="{{ asset('public/images/img03.jpg') }}" alt="Benefício 2">
+			<img src="{{ asset('images/img03.jpg') }}" alt="Benefício 2">
 		  </div>
 		</div>
 
 		<div class="row">
 		  <div class="col-md-5">
-			<img src="{{ asset('public/images/img02.jpg') }}" alt="Benefício 3">
+			<img src="{{ asset('images/img02.jpg') }}" alt="Benefício 3">
 		  </div>
 		  <div class="col-md-7 d-flex align-items-center">
 			<p class="p-3 text-dark rounded">Com o SmartPantry, sua lista de compras está sempre com você, em qualquer lugar e a qualquer momento.</p>
@@ -80,7 +80,7 @@
 		<div class="row">
 		  <div class="col-md-6">
 			<div class="d-flex align-items-center justify-content-center h-100">
-			  <img src="{{ asset('public/images/cashier-register-concept-vetor.jpg') }}" alt="Imagem de Funcionalidades" class="img-fluid">
+			  <img src="{{ asset('images/cashier-register-concept-vetor.jpg') }}" alt="Imagem de Funcionalidades" class="img-fluid">
 			</div>
 		  </div>
 		  <div class="col-md-6">
@@ -191,12 +191,12 @@
 		<div class="row text-center">
 		  <div class="col-md-12">
 			<div class="partners">
-			  <img src="{{ asset('public/images/logoepa.png') }}" alt="Parceiro 1">
-			  <img src="{{ asset('public/images/logobh.png') }}" alt="Parceiro 2">
-			  <img src="{{ asset('public/images/logoabc.png') }}" alt="Parceiro 3">
-			  <img src="{{ asset('public/images/logomineirao.png') }}" alt="Parceiro 4">
-			  <img src="{{ asset('public/images/logoapoio.png') }}" alt="Parceiro 5">
-			  <img src="{{ asset('public/images/logodia.png') }}" alt="Parceiro 6">
+			  <img src="{{ asset('images/logoepa.png') }}" alt="Parceiro 1">
+			  <img src="{{ asset('images/logobh.png') }}" alt="Parceiro 2">
+			  <img src="{{ asset('images/logoabc.png') }}" alt="Parceiro 3">
+			  <img src="{{ asset('images/logomineirao.png') }}" alt="Parceiro 4">
+			  <img src="{{ asset('images/logoapoio.png') }}" alt="Parceiro 5">
+			  <img src="{{ asset('images/logodia.png') }}" alt="Parceiro 6">
 			</div>
 		  </div>
 		</div>
@@ -262,12 +262,12 @@
 		<div class="row">
 		  <div class="col-md-6 text-center">
 			<a href="#" class="download-link">
-			  <img src="{{ asset('public/images/googleplay.png') }}" alt="Download no Google Play" class="download-img">
+			  <img src="{{ asset('images/googleplay.png') }}" alt="Download no Google Play" class="download-img">
 			</a>
 		  </div>
 		  <div class="col-md-6 text-center">
 			<a href="#" class="download-link">
-			  <img src="{{ asset('public/images/appstore.png') }}" alt="Download na App Store" class="download-img">
+			  <img src="{{ asset('images/appstore.png') }}" alt="Download na App Store" class="download-img">
 			</a>
 		  </div>
 		</div>
