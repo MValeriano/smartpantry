@@ -40,9 +40,6 @@
       <h1 class="text-center text-white">SmartPantry</h1>
       <p class="text-center text-white">Organize, planeje e economize. Simplifique e faça compras de forma inteligente com SmartPantry</p>
     </div>
-	<div>
-		{{ asset('css/bootstrap.min.css') }}
-	</div>
   </header>
 
 	<section id="benefits" class="section">
