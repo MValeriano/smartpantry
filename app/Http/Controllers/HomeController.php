@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
 
@@ -28,7 +30,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $totalProducts = Product::count();
+
+        $totalCategories = Category::count();
+
+        $itemsDespensa = 50;
+
+        $Productspertofim = 5;
+
+        $Produtosavencer = 10;
+
+        // Dados para o gráfico de produtos por categoria
+        $categories = Category::withCount('products')->get();
+        $categoryNames = $categories->pluck('category_name')->toArray();
+        $categoryQuantities = $categories->pluck('products_count')->toArray();
+        $categoryColors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'];
+
+        return view('dashboard', compact('Produtosavencer', 'Productspertofim', 'totalProducts', 'totalCategories', 'itemsDespensa', 'categoryNames', 'categoryQuantities', 'categoryColors'));
     }
 
     /**

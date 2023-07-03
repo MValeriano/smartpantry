@@ -13,17 +13,13 @@ use App\Http\Controllers\EmporiumProductController;
 use App\Http\Controllers\LarderController;
 
 // Rotas abertas
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
 Route::get('/', function () {
     return view('landingpage');
 });
 
 Route::get('/login', function () {
     return view('login');
-})->name('login');
+})->name('login.view');
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 

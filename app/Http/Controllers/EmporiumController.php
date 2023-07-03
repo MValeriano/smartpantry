@@ -110,7 +110,8 @@ class EmporiumController extends Controller
             'georeferencing_address_id' => $georeferencingAddress->id,
         ]);
 
-        return redirect()->route('emporiums.show', $emporium->id);
+        return redirect()->route('emporiums.create')
+        ->with('success', 'Parceiro criada com sucesso.', $emporium->id);
     }
 
     /**

@@ -11,6 +11,7 @@
 <div class="col-lg-2 col-md-3 sidebar">
     <img src="{{ asset('images/logoSmartPantry2.jpg') }}" alt="Logo da SmartPantry">
     <h4>Olá, {{ Auth::user()->name }}</h4>        
+    <a href="{{ route('home') }}"><i class="fas fa-home"></i><span class="menu-text">  Home </span></a>
     <a href="{{ route('supermarket_lists.create') }}"><i class="fas fa-tasks"></i><span class="menu-text">  Listas</span></a>
     <a href="{{ route('products.index') }}"><i class="fas fa-box"></i><span class="menu-text">  Produtos</span></a>
     <a href="{{ route('larders.index') }}"><i class="fas fa-utensils"></i><span class="menu-text">   Despensa</span></a>

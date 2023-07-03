@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="col-lg-10 col-md-9 content">
+
     <div class="row">
         <div class="col-lg-3 col-md-6 py-3">
             <div class="card shadow border-0">
@@ -12,7 +13,7 @@
                     </div>
                     <div>
                         <h6 class="card-title">Produtos Prestes a Vencer</h6>
-                        <h3 class="card-value text-center display-4">10</h3>
+                        <h3 class="card-value text-center display-4">{{ $Produtosavencer }}</h3>
                     </div>
                 </div>
             </div>
@@ -26,7 +27,7 @@
                     </div>
                     <div>
                         <h6 class="card-title">Produtos perto do fim</h6>
-                        <h3 class="card-value text-center display-4">5</h3>
+                        <h3 class="card-value text-center display-4">{{ $Productspertofim }}</h3>
                     </div>
                 </div>
             </div>
@@ -41,7 +42,7 @@
                     </div>
                     <div>
                         <h6 class="card-title">Produtos Cadastrados</h6>
-                        <h3 class="card-value text-center display-4">100</h3>
+                        <h3 class="card-value text-center display-4">{{ $totalProducts }}</h3>
                     </div>
                 </div>
             </div>
@@ -56,7 +57,7 @@
                     </div>
                     <div>
                         <h6 class="card-title">Total de Categorias</h6>
-                        <h3 class="card-value text-center display-4">8</h3>
+                        <h3 class="card-value text-center display-4">{{ $totalCategories }}</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +72,7 @@
                     </div>
                     <div>
                         <h6 class="card-title">Itens na Despensa</h6>
-                        <h3 class="card-value text-center display-4">50</h3>
+                        <h3 class="card-value text-center display-4">{{ $itemsDespensa }}</h3>
                     </div>
                 </div>
             </div>
@@ -123,21 +124,15 @@
         }
     });
     
-    // Configuração do gráfico de produtos por categoria
     var ctxProdutosCategoria = document.getElementById('chartProdutosCategoria').getContext('2d');
     var chartProdutosCategoria = new Chart(ctxProdutosCategoria, {
         type: 'pie',
         data: {
-            labels: ['Mercearia', 'Açougue', 'Alimentos', 'Limpeza'],
+            labels: {!! json_encode($categoryNames) !!},
             datasets: [{
                 label: 'Quantidade',
-                data: [30, 45, 20, 15],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)',
-                    'rgb(75, 192, 192)'
-                ],
+                data: {!! json_encode($categoryQuantities) !!},
+                backgroundColor: {!! json_encode($categoryColors) !!},
                 borderColor: 'rgba(0, 0, 0, 0.2)',
                 borderWidth: 1
             }]

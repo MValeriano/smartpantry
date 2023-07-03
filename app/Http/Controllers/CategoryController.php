@@ -35,9 +35,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();                
-        return view('categories.index', compact('categories'));        
-        // return response()->json($categories);
+        $categories = Category::paginate(5);
+        return view('categories.index', compact('categories'));       
     }
 
     public function create()
@@ -73,15 +72,13 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name' => 'required|max:100',
-            'category_description' => 'required|max:100',
+            'category_description' => 'required|max:150',
         ]);
 
         $category = Category::create($request->all());
 
-        return redirect()->route('categories.index')
+        return redirect()->route('categories.create')
             ->with('success', 'Categoria criada com sucesso.');
-
-        // return response()->json($category, Response::HTTP_CREATED);
     }
 
     public function edit(Category $category)
@@ -116,7 +113,6 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         return view('categories.show', compact('category'));
-        // return response()->json($category);
     }
 
     /**
@@ -155,14 +151,13 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name' => 'required|max:100',
-            'category_description' => 'required|max:100',
+            'category_description' => 'required|max:150',
         ]);
 
         $category->update($request->all());
 
         return redirect()->route('categories.index')
         ->with('success', 'Categoria atualizada com sucesso.');
-        // return response()->json($category);
     }
 
     /**
@@ -194,6 +189,5 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index')
         ->with('success', 'Categoria excluída com sucesso.');
-        // return response()->noContent();
     }
 }

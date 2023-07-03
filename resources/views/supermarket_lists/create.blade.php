@@ -19,43 +19,52 @@
 
                 <form method="POST" action="{{ route('supermarket_lists.store') }}">
                     @csrf
-
-                    <div class="form-group pb-3">
-                        <label for="list_name">Nome da Lista</label>
-                        <input type="text" class="form-control" id="list_name" name="list_name" required>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group pb-3">
+                                <label for="list_name">Nome da Lista</label>
+                                <input type="text" class="form-control" id="list_name" name="list_name" required>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group pb-3">
-                        <label for="product">Produto</label>
-                        <input type="text" list="products" class="form-control" id="product">
-                        <datalist id="products">
-                            @foreach ($products as $product)
-                            <option value="{{ $product->id }}">{{ $product->product_name }}</option>
-                            @endforeach
-                        </datalist>
-                    </div>
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="form-group pb-3">
+                                <label for="product">Produto</label>
+                                <input type="text" list="products" class="form-control" id="product">
+                                <datalist id="products">
+                                    @foreach ($products as $product)
+                                        <option value="{{ $product->id }}">{{ $product->product_name }}</option>
+                                    @endforeach
+                                </datalist>
+                            </div>
+                        </div>                    
 
-                    <div class="form-group pb-3">
-                        <label for="product_quantity">Quantidade</label>
-                        <input type="number" class="form-control" id="product_quantity">
+                        <div class="col-3">
+                            <div class="form-group pb-3">
+                                <label for="product_quantity">Quantidade</label>
+                                <input type="number" class="form-control" id="product_quantity">
+                            </div>
+                        </div>
                     </div>
-
                     <button type="button" class="btn btn-primary my-3" id="add_product">Adicionar Produto à Lista</button>
 
-                    <hr>
-
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody id="product_table_body">
-                        </tbody>
-                    </table>
-
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <table class="table table-striped table-small table-hover table-fixed">
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Quantidade</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="product_table_body">
+                                </tbody>
+                            </table>                            
+                        </div>                        
+                    </div>
                     <button type="submit" class="btn btn-primary">Criar Lista de Compras</button>
                 </form>
             </div>
