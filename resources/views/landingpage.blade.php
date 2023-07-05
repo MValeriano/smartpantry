@@ -33,7 +33,7 @@
           </li>
         </ul>
         <a class="btn btn-primary mr-2" href="{{ route('login') }}">Login</a>
-        <a class="btn btn-secondary" href="{{ route('register') }}">Registrar</a>
+        <a class="btn btn-secondary" href="{{ route('showRegistrationForm') }}">Registrar</a>
       </div>
     </nav>
     <div class="header-content">

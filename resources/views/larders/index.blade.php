@@ -23,8 +23,9 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                
-                <div class="card mt-3">
+
+
+                <div class="card mt-3">                    
                     <div class="card-body">   
                         @if ($larderItems->isEmpty()) 
                             <p class="text-center fs-4">Não há Itens cadastrados na despensa.</p>                                                    
@@ -39,14 +40,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($larderItems as $category)
+
+                                @foreach ($larderItems as $larder)
                                         <tr>
-                                            <td style="width: 5%;">{{ $larderItem->products->first()->product_name }}</td>
-                                            <td style="width: 20%;">{{ $larderItem->products->first()->pivot->quantity }}</td>
-                                            <td style="width: 55%;">{{ $larderItem->products->first()->pivot->expiration_date }}</td>
+                                            <td style="width: 5%;">{{ $larder->products->first()->product_name }}</td>
+                                            <td style="width: 20%;">{{ $larder->products->first()->pivot->quantity  }}</td>
+                                            <td style="width: 55%;">{{ $larder->products->first()->pivot->expiration_date  }}</td>
                                             <td style="width: 20%;">
-                                            <a href="{{ route('larders.edit', $larderItem->id) }}" class="btn btn-sm btn-primary">Editar</a>
-                                            <form action="{{ route('larders.destroy', $larderItem->id) }}" method="POST" class="d-inline">
+                                            <a href="{{ route('larders.edit', $larder->id) }}" class="btn btn-sm btn-primary">Editar</a>
+                                            <form action="{{ route('larders.destroy', $larder->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Deseja excluir este item da despensa?')">Excluir</button>
@@ -56,7 +58,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
                             <nav aria-label="Navegação da página da despensa">
                                 <ul class="pagination">
                                     @if ($larderItems->onFirstPage())
@@ -86,8 +87,8 @@
                                         <span class="sr-only">Próximo</span>
                                     </a>
                                     </li>
-                                </ul>
-                            </nav>          
+                                </ul>                            
+        
                         @endif
                     </div>
                 </div>

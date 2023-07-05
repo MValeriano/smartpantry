@@ -29,4 +29,8 @@ class UserController extends Controller
 
         return redirect()->route('login')->with('success', 'Usuário registrado com sucesso!');
     }
+
+    public function setAccountData(Request $request){
+        return view('account.index');
+    }
 }

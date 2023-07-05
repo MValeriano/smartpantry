@@ -16,10 +16,10 @@ class LarderController extends Controller
     public function index()
     {
         $larderItems = Larder::with('products')->paginate(5);
-
+        
         return view('larders.index', compact('larderItems'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

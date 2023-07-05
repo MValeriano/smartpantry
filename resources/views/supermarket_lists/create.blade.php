@@ -17,6 +17,12 @@
                 </div>
                 @endif
 
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif                
+
                 <form method="POST" action="{{ route('supermarket_lists.store') }}">
                     @csrf
                     <div class="row">
@@ -62,17 +68,23 @@
                                 </thead>
                                 <tbody id="product_table_body">
                                 </tbody>
-                            </table>                            
-                        </div>                        
+                            </table>      
+                        </div>                         
                     </div>
-                    <button type="submit" class="btn btn-primary">Criar Lista de Compras</button>
+                    <div class="row mb-3">
+                        <div class="col-md-12 text-end">
+                            <button type="submit" class="btn btn-primary mt-4">Criar Lista de Compras</button>
+                            <button type="reset" class="btn btn-secondary mt-4">Limpar</button>
+                            <a href="{{ route('supermarket_lists.index') }}" class="btn btn-secondary mt-4">Voltar</a>
+                        </div>
+                    </div>   
                 </form>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function () {            
             const addProductButton = document.getElementById('add_product');
             const productInput = document.getElementById('product');
             const quantityInput = document.getElementById('product_quantity');
@@ -87,6 +99,7 @@
 
                 const row = document.createElement('tr');
                 row.innerHTML = `
+                <tr class="product-row">
                     <td>${productName}</td>
                     <td>${quantity}</td>
                     <td>
@@ -94,6 +107,7 @@
                         <input type="hidden" name="product_quantity[]" value="${quantity}">
                         <button type="button" class="btn btn-danger btn-sm" onclick="removeProduct(this)">Remover</button>
                     </td>
+                </tr>
                 `;
 
                 productTableBody.appendChild(row);
@@ -106,9 +120,11 @@
                 return products.find(product => product.id === parseInt(productId));
             }
         });
+
         function removeProduct(button) {
                 button.closest('tr').remove();
-            }
+        };
+
     </script>
 </div>
 @endsection

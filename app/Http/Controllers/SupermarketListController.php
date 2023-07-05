@@ -6,8 +6,11 @@ use App\Models\SupermarketList;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 use Barryvdh\DomPDF\Facade\Pdf;
 use OpenApi\Annotations as OA;
+use App\Models\Larder;
+use App\Models\LarderProduct;
 
 /**
  * @OA\Tag(name="SupermarketList")
@@ -35,6 +38,15 @@ class SupermarketListController extends Controller
         $products = Product::all();
         $supermarketList = new SupermarketList(); 
         return view('supermarket_lists.create', compact('products', 'supermarketList'));
+    }
+
+    public function index()
+    {
+        $user = Auth::user();
+
+        $supermarketLists  = SupermarketList::where( 'user_id', $user->id )->paginate(5); 
+        return view('supermarket_lists.index', compact('supermarketLists'));
+
     }
 
     /**
@@ -93,7 +105,7 @@ class SupermarketListController extends Controller
             ]);
         }
 
-        return redirect()->route('supermarket_lists.show', $supermarketList)
+        return redirect()->route('supermarket_lists.create', $supermarketList)
             ->with('success', 'Lista de compras criada com sucesso!');
     }
 
@@ -123,7 +135,7 @@ class SupermarketListController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(SupermarketList $supermarketList)
-    {
+    {   
         return view('supermarket_lists.show', compact('supermarketList'));
     }
 
@@ -153,7 +165,7 @@ class SupermarketListController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function conclude(SupermarketList $supermarketList)
-    {
+    {        
         return view('supermarket_lists.conclude', compact('supermarketList'));
     }    
 
@@ -201,15 +213,36 @@ class SupermarketListController extends Controller
         ]);
     
         $products = $supermarketList->products;
-    
+
+        $totalPrice = 0;
+
         foreach ($products as $index => $product) {
-            $product->pivot->supermarket_list_products_price = $request->input('product_values')[$index];
+            $productPrice = $request->input('product_values')[$index];
+            $product->pivot->supermarket_list_products_price = $productPrice;
             $product->pivot->purchased = in_array($product->id, $request->input('product_purchased'), false) ? '1' : '0';
             $product->pivot->save();
+    
+            $totalPrice += $productPrice;
         }
     
-        return redirect()->route('supermarket_lists.show', $supermarketList)
-            ->with('success', 'Lista de compras atualizada com sucesso!');
+        $supermarketList->supermarket_list_price_total = $totalPrice;
+        $supermarketList->save();
+
+        $larder = new Larder();
+        $larder->user_id = auth()->user()->id;
+        $larder->save();
+
+        foreach ($products as $index => $product) {
+            $larderProduct = new LarderProduct();
+            $larderProduct->larder_id = $larder->id;
+            $larderProduct->product_id = $product->id;
+            $larderProduct->quantity = $request->input('product_quantity')[$index];
+            $larderProduct->expiration_date = $request->input('product_expiration_date')[$index];
+            $larderProduct->save();
+        }        
+
+        return redirect()->route('supermarket_lists.conclude', $supermarketList)
+        ->with('success', 'Lista de compras atualizada com sucesso!');        
     }    
 
     /**
@@ -241,8 +274,7 @@ class SupermarketListController extends Controller
     {
         $supermarketList = SupermarketList::findOrFail($id);
     
-        $pdf = PDF::loadView('supermarket_lists.show', compact('supermarketList'));
-    
-        return $pdf->download('lista_compras.pdf');
+        $pdf = PDF::loadView('supermarket_lists.imprimepdf', compact('supermarketList'));
+        return $pdf->stream();
     }
 }

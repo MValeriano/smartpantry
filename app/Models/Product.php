@@ -29,8 +29,9 @@ class Product extends Model
 
     public function larders()
     {
-        return $this->belongsToMany(Larder::class, 'larder_product')
+        return $this->belongsToMany(Larder::class, 'larders_products')
             ->withPivot('quantity', 'expiration_date');
+        // return $this->belongsToMany(Larder::class, 'larders_products', 'product_id', 'larder_id');
     }
 
 }
