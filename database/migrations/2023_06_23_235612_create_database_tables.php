@@ -127,10 +127,8 @@ class CreateDatabaseTables extends Migration
         
         Schema::create('larders', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->integer('quantity');
-            $table->date('product_shelf');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
         
@@ -179,6 +177,17 @@ class CreateDatabaseTables extends Migration
             $table->foreign('shared_with_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
+
+        Schema::create('larders_products', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('larder_id');
+            $table->unsignedBigInteger('product_id');
+            $table->integer('quantity');
+            $table->date('expiration_date');                     
+            $table->foreign('larder_id')->references('id')->on('larders')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->timestamps();   
+        });        
         
     }
 
@@ -208,5 +217,6 @@ class CreateDatabaseTables extends Migration
         Schema::dropIfExists('events');
         Schema::dropIfExists('event_recipe');
         Schema::dropIfExists('shared_lists');
+        Schema::dropIfExists('larders_products');
     }
 }

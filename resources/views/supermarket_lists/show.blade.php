@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-lg-10 col-md-9 content">
     <h1>Detalhes da Lista de Compras</h1>
-    <p><strong>Nome da Lista:</strong> {{ $supermarketList->list_name }}</p>
+    <p><strong>Nome da Lista:</strong>{{ $supermarketList->list_name }} </p>
     <p><strong>Data de Criação:</strong> {{ $supermarketList->created_at }}</p>
 
     <h2>Produtos:</h2>
@@ -19,7 +19,7 @@
     
     <script>
         function exportToPdf() {
-            window.location.href = "{{ route('supermarket_lists.show', $supermarketList) }}";
+            window.location.href = "{{ route('supermarket_lists.imprimepdf', $supermarketList) }}";
         }
 
         function concludeList() {

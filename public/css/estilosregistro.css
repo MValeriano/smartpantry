@@ -16,7 +16,7 @@
   
   .header {
     background-color: var(--cor-principal);
-    padding: 20px;
+    padding: 5vh;
     text-align: center;
   }
   
@@ -33,14 +33,20 @@
   }
   
   .main-content {
+    background-image: linear-gradient(rgba(15, 76, 129, 0.8), rgba(15, 76, 129, 0.2)), url('../images/mercearia-compras.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left 30%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
   }
   
   #center-content {
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 50px;
   }
   
   .register-form input {
@@ -67,7 +73,7 @@
   
   .footer {
     background-color: var(--cor-principal);
-    padding: 10px;
+    padding: 2vh;
     text-align: center;
     position: fixed;
     left: 0;

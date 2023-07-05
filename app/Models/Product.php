@@ -27,4 +27,11 @@ class Product extends Model
         return $this->belongsToMany(Emporium::class, 'emporiums_products', 'product_id', 'emporium_id');
     }
 
+    public function larders()
+    {
+        return $this->belongsToMany(Larder::class, 'larders_products')
+            ->withPivot('quantity', 'expiration_date');
+        // return $this->belongsToMany(Larder::class, 'larders_products', 'product_id', 'larder_id');
+    }
+
 }

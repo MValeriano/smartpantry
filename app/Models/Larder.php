@@ -9,10 +9,11 @@ class Larder extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['product_id', 'quantity', 'product_shelf'];
-
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class);
-    }    
+        return $this->belongsToMany(Product::class, 'larders_products')
+            ->withPivot('quantity', 'expiration_date');
+        // return $this->belongsToMany(Product::class, 'larders_products', 'larder_id', 'product_id');
+    }
+ 
 }

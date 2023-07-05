@@ -17,53 +17,74 @@
                 </div>
                 @endif
 
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif                
+
                 <form method="POST" action="{{ route('supermarket_lists.store') }}">
                     @csrf
-
-                    <div class="form-group pb-3">
-                        <label for="list_name">Nome da Lista</label>
-                        <input type="text" class="form-control" id="list_name" name="list_name" required>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group pb-3">
+                                <label for="list_name">Nome da Lista</label>
+                                <input type="text" class="form-control" id="list_name" name="list_name" required>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group pb-3">
-                        <label for="product">Produto</label>
-                        <input type="text" list="products" class="form-control" id="product">
-                        <datalist id="products">
-                            @foreach ($products as $product)
-                            <option value="{{ $product->id }}">{{ $product->product_name }}</option>
-                            @endforeach
-                        </datalist>
-                    </div>
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="form-group pb-3">
+                                <label for="product">Produto</label>
+                                <input type="text" list="products" class="form-control" id="product">
+                                <datalist id="products">
+                                    @foreach ($products as $product)
+                                        <option value="{{ $product->id }}">{{ $product->product_name }}</option>
+                                    @endforeach
+                                </datalist>
+                            </div>
+                        </div>                    
 
-                    <div class="form-group pb-3">
-                        <label for="product_quantity">Quantidade</label>
-                        <input type="number" class="form-control" id="product_quantity">
+                        <div class="col-3">
+                            <div class="form-group pb-3">
+                                <label for="product_quantity">Quantidade</label>
+                                <input type="number" class="form-control" id="product_quantity">
+                            </div>
+                        </div>
                     </div>
-
                     <button type="button" class="btn btn-primary my-3" id="add_product">Adicionar Produto à Lista</button>
 
-                    <hr>
-
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody id="product_table_body">
-                        </tbody>
-                    </table>
-
-                    <button type="submit" class="btn btn-primary">Criar Lista de Compras</button>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <table class="table table-striped table-small table-hover table-fixed">
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Quantidade</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="product_table_body">
+                                </tbody>
+                            </table>      
+                        </div>                         
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12 text-end">
+                            <button type="submit" class="btn btn-primary mt-4">Criar Lista de Compras</button>
+                            <button type="reset" class="btn btn-secondary mt-4">Limpar</button>
+                            <a href="{{ route('supermarket_lists.index') }}" class="btn btn-secondary mt-4">Voltar</a>
+                        </div>
+                    </div>   
                 </form>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function () {            
             const addProductButton = document.getElementById('add_product');
             const productInput = document.getElementById('product');
             const quantityInput = document.getElementById('product_quantity');
@@ -78,6 +99,7 @@
 
                 const row = document.createElement('tr');
                 row.innerHTML = `
+                <tr class="product-row">
                     <td>${productName}</td>
                     <td>${quantity}</td>
                     <td>
@@ -85,6 +107,7 @@
                         <input type="hidden" name="product_quantity[]" value="${quantity}">
                         <button type="button" class="btn btn-danger btn-sm" onclick="removeProduct(this)">Remover</button>
                     </td>
+                </tr>
                 `;
 
                 productTableBody.appendChild(row);
@@ -97,9 +120,11 @@
                 return products.find(product => product.id === parseInt(productId));
             }
         });
+
         function removeProduct(button) {
                 button.closest('tr').remove();
-            }
+        };
+
     </script>
 </div>
 @endsection

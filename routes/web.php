@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('login');
-})->name('login');
+})->name('login.view');
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
@@ -28,26 +28,31 @@ Route::get('/login/{provider}/callback', [LoginController::class, 'handleProvide
 
 Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 
-Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [UserController::class, 'register']);
+Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('showRegistrationForm');
+Route::post('/register', [UserController::class, 'register'])->name('register');
 // Fim das rotas abertas
 
 // Rotas protegidas
 Route::middleware('auth')->group(function () {
+    Route::get('/account', [UserController::class, 'setAccountData'])->name('account');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/dashboard', [HomeController::class, 'paginaInicial'])->name('dashboard');
 
     Route::resource('categories', CategoryController::class)->middleware('auth');
 
     Route::get('/supermarket_lists/create', [SupermarketListController::class, 'create'])->name('supermarket_lists.create');
+    Route::get('/supermarket_lists/index', [SupermarketListController::class, 'index'])->name('supermarket_lists.index');
+    Route::get('/supermarket_lists/edit', [SupermarketListController::class, 'edit'])->name('supermarket_lists.edit');
+    Route::get('/supermarket_lists/destroy', [SupermarketListController::class, 'destroy'])->name('supermarket_lists.destroy');
     Route::post('/supermarket_lists', [SupermarketListController::class, 'store'])
         ->name('supermarket_lists.store');
     Route::get('/supermarket_lists/{supermarket_list}', [SupermarketListController::class, 'show'])->name('supermarket_lists.show');
     Route::get('supermarket_lists/{supermarketList}/conclude', [SupermarketListController::class, 'conclude'])->name('supermarket_lists.conclude');
+    Route::get('supermarket_lists/{supermarketList}/imprimepdf', [SupermarketListController::class, 'exportToPdf'])->name('supermarket_lists.imprimepdf');    
     Route::put('/supermarket_lists/{supermarket_list}', [SupermarketListController::class, 'update'])->name('supermarket_lists.update');
 
     Route::resource('products', ProductController::class)->middleware('auth');
-    Route::get('/supermarket_lists/{supermarketList}/show', [SupermarketListController::class, 'exportToPdf'])->name('supermarket_lists.show');
+    Route::get('/supermarket_lists/{supermarketList}/show', [SupermarketListController::class, 'show'])->name('supermarket_lists.show');
 
     Route::get('/administrar-perfis', [ProfileController::class, 'index'])->name('administrar.perfis')->middleware('auth');
 

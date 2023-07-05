@@ -15,11 +15,11 @@ class LarderController extends Controller
      */
     public function index()
     {
-        $larderItems = Larder::with('product')->get();
-
+        $larderItems = Larder::with('products')->paginate(5);
+        
         return view('larders.index', compact('larderItems'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -43,10 +43,14 @@ class LarderController extends Controller
         $request->validate([
             'product_id' => 'required',
             'quantity' => 'required|integer',
-            'product_shelf' => 'required|date',
+            'expiration_date' => 'required|date',
         ]);
 
-        Larder::create($request->all());
+        $larder = Larder::create();
+        $larder->products()->attach($request->product_id, [
+            'quantity' => $request->quantity,
+            'expiration_date' => $request->expiration_date,
+        ]);
 
         return redirect()->route('larders.index')
             ->with('success', 'Item adicionado à despensa com sucesso.');
@@ -71,6 +75,7 @@ class LarderController extends Controller
      */
     public function edit($id)
     {
+        $larder = Larder::findOrFail($id);
         $products = Product::all();
 
         return view('larders.edit', compact('larder', 'products'));
@@ -88,10 +93,14 @@ class LarderController extends Controller
         $request->validate([
             'product_id' => 'required',
             'quantity' => 'required|integer',
-            'product_shelf' => 'required|date',
+            'expiration_date' => 'required|date',
         ]);
 
-        $larder->update($request->all());
+        $larder = Larder::findOrFail($id);
+        $larder->products()->sync([$request->product_id => [
+            'quantity' => $request->quantity,
+            'expiration_date' => $request->expiration_date,
+        ]]);
 
         return redirect()->route('larders.index')
             ->with('success', 'Item da despensa atualizado com sucesso.');
@@ -107,7 +116,7 @@ class LarderController extends Controller
     {
         $larder = Larder::findOrFail($id);
         $larder->delete();
-    
+
         return redirect()->route('larders.index')
             ->with('success', 'Item da despensa excluído com sucesso.');
     }

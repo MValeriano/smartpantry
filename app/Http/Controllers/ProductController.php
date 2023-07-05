@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->paginate(10);
         return view('products.index', compact('products'));
     }
 
@@ -99,7 +99,7 @@ class ProductController extends Controller
 
         Product::create($request->all());
 
-        return redirect()->route('products.index')->with('success', 'Produto criado com sucesso!');
+        return redirect()->route('products.create')->with('success', 'Produto criado com sucesso!');
     }
 
     /**
@@ -214,7 +214,7 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
-        return redirect()->route('products.index')->with('success', 'Produto atualizado com sucesso!');
+        return redirect()->route('products.edit', $product->id)->with('success', 'Produto atualizado com sucesso!');
     }
 
     /**

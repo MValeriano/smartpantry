@@ -3,6 +3,7 @@
 <head>
   <title>SmartPantry - Login</title>
   <link href="{{ asset('css/estiloslogin.css') }}" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
 
 </head>
@@ -15,7 +16,7 @@
   <main class="main-content">
 	<div id="center-content">
     @if ($errors->any())
-      <div class="alert alert-danger mt-4">
+      <div class="alert alert-danger mt-4" role="alert">
         <ul>
           @foreach ($errors->all() as $error)
           <li>{{ $error }}</li>
@@ -41,7 +42,7 @@
         </button>
       </div>
     </div>
-    <p class="register-link">Ainda não possui uma conta? <a href="{{ route('register') }}">Registre-se</a></p>    
+    <p class="register-link">Ainda não possui uma conta? <a href="{{ route('showRegistrationForm') }}">Registre-se</a></p>    
 
 
 	</div>
