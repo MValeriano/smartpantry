@@ -46,7 +46,7 @@
   </main>
 
   <footer class="footer">
-    <p>© 2023 SmartPantry. Todos os direitos reservados. </p>
+    <p>© 2023 SmartPantry. Todos os direitos reservados.</p>
   </footer>
 </body>
 </html>

@@ -12,7 +12,7 @@
                             <i class="fas fa-exclamation-circle fa-3x"></i></span>
                     </div>
                     <div>
-                        <h6 class="card-title">Produtos Prestes a Vencer</h6>
+                        <h6 class="card-title">Produtos Prestes a Vencer </h6>
                         <h3 class="card-value text-center display-4">{{ $Produtosavencer }}</h3>
                     </div>
                 </div>

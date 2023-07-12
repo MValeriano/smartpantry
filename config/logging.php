@@ -21,6 +21,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Deprecations Log Channel
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the log channel that should be used to log warnings
+    | regarding deprecated PHP and library features. This allows you to get
+    | your application ready for upcoming major versions of dependencies.
+    |
+    */
+
+    'deprecations' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Log Channels
     |--------------------------------------------------------------------------
     |
@@ -37,7 +50,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single', 'stdout'],
+            'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
 
@@ -74,18 +87,11 @@ return [
 
         'stderr' => [
             'driver' => 'monolog',
+            'level' => env('LOG_LEVEL', 'debug'),
             'handler' => StreamHandler::class,
             'formatter' => env('LOG_STDERR_FORMATTER'),
             'with' => [
                 'stream' => 'php://stderr',
-            ],
-        ],
-
-        'stdout' => [
-            'driver' => 'monolog',
-            'handler' => StreamHandler::class,
-            'with' => [
-                'stream' => 'php://stdout',
             ],
         ],
 
