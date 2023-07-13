@@ -118,11 +118,11 @@
 					<div class="price-duration">por mês</div>
 				  </div>
 				</div>
-				<p class="card-description">Adicione uma descrição da sua oferta e benefícios-chave</p>
+				<p class="card-description">O plano Basic do SmartPantry é perfeito para pessoas que desejam começar a organizar e gerenciar melhor sua despensa doméstica. Com recursos essenciais, você terá acesso a funcionalidades básicas para facilitar o controle de estoque e a gestão dos produtos.</p>
 				<ul class="benefits">
-				  <li>Benefício No. 1</li>
-				  <li>Benefício No. 2</li>
-				  <li>Benefício No. 3</li>
+				  <li>Rastreamento de produtos</li>
+				  <li>Notificações de vencimento</li>
+				  <li>Lista de compras simplificada</li>
 				</ul>
 				<a href="#" class="btn btn-primary btn-block">Escolher</a>
 			  </div>
@@ -144,11 +144,11 @@
 					<div class="price-duration">por mês</div>
 				  </div>
 				</div>
-				<p class="card-description">Adicione uma descrição da sua oferta e benefícios-chave</p>
+				<p class="card-description">O plano Pró do SmartPantry oferece recursos avançados para aqueles que desejam aprimorar ainda mais a organização e a gestão de suas despensas. Tenha acesso a funcionalidades adicionais que otimizarão sua experiência e ajudarão a economizar tempo.</p>
 				<ul class="benefits">
-				  <li>Benefício No. 1</li>
-				  <li>Benefício No. 2</li>
-				  <li>Benefício No. 3</li>
+				  <li>Escaneamento de códigos de barras</li>
+				  <li>Personalização de categorias</li>
+				  <li>Relatórios e insights</li>
 				</ul>
 				<a href="#" class="btn btn-primary btn-block">Escolher</a>
 			  </div>
@@ -170,11 +170,11 @@
 					<div class="price-duration">por mês</div>
 				  </div>
 				</div>
-				<p class="card-description">Adicione uma descrição da sua oferta e benefícios-chave</p>
+				<p class="card-description">O plano Advanced do SmartPantry é voltado para usuários que desejam uma solução completa e robusta para o gerenciamento de suas despensas. Com recursos avançados e integrações, você terá o máximo de controle e conveniência.</p>
 				<ul class="benefits">
-				  <li>Benefício No. 1</li>
-				  <li>Benefício No. 2</li>
-				  <li>Benefício No. 3</li>
+				  <li>Integração com assistentes virtuais</li>
+				  <li>Compartilhamento de despensas</li>
+				  <li>Notificações personalizadas</li>
 				</ul>
 				<a href="#" class="btn btn-primary btn-block">Escolher</a>
 			  </div>
@@ -210,26 +210,26 @@
 			<div class="card-deck">
 			  <div class="card">
 				<div class="card-body">
-				  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo mi ac tellus congue, eu facilisis nunc commodo.</p>
-				  <p class="card-text"><strong>Cliente 1</strong></p>
+				  <p class="card-text">O SmartPantry é incrível! Nunca mais tive problemas com produtos vencidos na minha despensa. Agora consigo controlar facilmente as datas de validade e receber notificações antes que algo expire. É uma ferramenta indispensável para uma despensa organizada e uma rotina mais tranquila.</p>
+				  <p class="card-text"><strong>Ana Silva</strong></p>
 				</div>
 			  </div>
 			  <div class="card">
 				<div class="card-body">
-				  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo mi ac tellus congue, eu facilisis nunc commodo.</p>
-				  <p class="card-text"><strong>Cliente 2</strong></p>
+				  <p class="card-text">Eu adoro o SmartPantry! Com o plano Pró, posso escanear os códigos de barras dos produtos e adicioná-los à minha despensa em segundos. Além disso, os relatórios de consumo me ajudam a entender melhor meus hábitos alimentares e a fazer compras de forma mais inteligente. Recomendo a todos!</p>
+				  <p class="card-text"><strong>Pedro Santos</strong></p>
 				</div>
 			  </div>
 			  <div class="card">
 				<div class="card-body">
-				  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo mi ac tellus congue, eu facilisis nunc commodo.</p>
-				  <p class="card-text"><strong>Cliente 3</strong></p>
+				  <p class="card-text">O SmartPantry é uma solução completa para o gerenciamento da minha despensa. Com o plano Advanced, consigo controlar meu estoque usando comandos de voz através da integração com a assistente virtual. Além disso, o compartilhamento da despensa facilita a organização em família. Estou muito satisfeita!</p>
+				  <p class="card-text"><strong>Marina Oliveira</strong></p>
 				</div>
 			  </div>
 			  <div class="card">
 				<div class="card-body">
-				  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo mi ac tellus congue, eu facilisis nunc commodo.</p>
-				  <p class="card-text"><strong>Cliente 4</strong></p>
+				  <p class="card-text">Desde que comecei a usar o SmartPantry, minha vida ficou muito mais prática. Não preciso mais ficar anotando itens de reposição manualmente, pois a plataforma gera automaticamente listas de compras com base no meu estoque. Agora, economizo tempo e nunca mais esqueço de comprar algo importante.</p>
+				  <p class="card-text"><strong>Lucas Rodrigues</strong></p>
 				</div>
 			  </div>
 			</div>

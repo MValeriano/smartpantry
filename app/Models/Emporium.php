@@ -15,7 +15,7 @@ class Emporium extends Model
     
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'emporiums_products', 'emporium_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'emporiums_products', 'emporiums_id', 'products_id');
     }    
 
     public function georeferencingAddress()

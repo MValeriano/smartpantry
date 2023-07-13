@@ -24,7 +24,7 @@ class Product extends Model
 
     public function emporiums()
     {
-        return $this->belongsToMany(Emporium::class, 'emporiums_products', 'product_id', 'emporium_id');
+        return $this->belongsToMany(Emporium::class, 'emporiums_products', 'products_id', 'emporiums_id');
     }
 
     public function larders()
