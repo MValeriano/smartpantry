@@ -100,11 +100,11 @@
 	</section>
 
 	<section id="plans" class="section bg-light">
-	  <div class="container py-5">
+	  <div class="container py-2">
 		<h2 class="text-center custom-title">Planos do SmartPantry</h2>
-		<div class="row  d-flex align-items-center justify-content-center" style="height: 100vh;">	
+		<div class="row d-flex align-items-center justify-content-center" style="height: 100vh;">	
 		  <div class="col-md-4">
-			<div class="card">
+			<div class="card card-size">
 			  <div class="card-header">
 				<h3 class="text-center">Basic</h3>
 			  </div>
@@ -170,7 +170,7 @@
 					<div class="price-duration">por mês</div>
 				  </div>
 				</div>
-				<p class="card-description">O plano Advanced do SmartPantry é voltado para usuários que desejam uma solução completa e robusta para o gerenciamento de suas despensas. Com recursos avançados e integrações, você terá o máximo de controle e conveniência.</p>
+				<p class="card-description">O plano Advanced do SmartPantry é voltado para usuários todos os que desejam uma solução completa e robusta para o gerenciamento de suas despensas e de suas listas de compras. Com recursos avançados e integrações, você terá o máximo de controle e conveniência.</p>
 				<ul class="benefits">
 				  <li>Integração com assistentes virtuais</li>
 				  <li>Compartilhamento de despensas</li>
@@ -200,8 +200,8 @@
 			</div>
 		  </div>
 		</div>
-		<div class="row mt-5">
-		  <div class="col-md-12 py-5">
+		<div class="row mt-2">
+		  <div class="col-md-12 py-2">
 			<h2 class="text-center">O que falam de nós</h2>
 		  </div>
 		</div>

@@ -35,6 +35,9 @@ Route::post('/register', [UserController::class, 'register'])->name('register');
 // Rotas protegidas
 Route::middleware('auth')->group(function () {
     Route::get('/account', [UserController::class, 'setAccountData'])->name('account');
+    Route::post('/account/update', [UserController::class, 'updateAccountData'])->name('account.update');
+    Route::delete('/account/destroy', [UserController::class, 'destroyAccountData'])->name('account.destroy');
+    Route::post('/account/assignProfile', [UserController::class, 'assignProfile'])->name('account.assignProfile');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/dashboard', [HomeController::class, 'paginaInicial'])->name('dashboard');
 

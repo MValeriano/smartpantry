@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -31,6 +33,56 @@ class UserController extends Controller
     }
 
     public function setAccountData(Request $request){
-        return view('account.index');
+        $user = Auth::user();
+        $profiles = Profile::all();
+        return view('account.index', compact('user','profiles'));
+    }
+
+    public function assignProfile(Request $request)
+    {
+        $request->validate([
+            'profile' => 'required|exists:profiles,id',
+        ]);
+    
+        $profileId = $request->input('profile');
+    
+        $user = auth()->user();
+        $user->profile_id = $profileId;
+        $user->save();
+    
+        return redirect()->route('account')->with('success', 'Perfil atribuído com sucesso!');
+    }
+
+    public function updateAccountData(Request $request)
+    {
+        $user = Auth::user();
+    
+        if ($request->has('name')) {
+            $user->name = $request->name;
+        }
+    
+        if ($request->has('password')) {
+            if (!empty($user->provider) && !empty($user->provider_id)) {
+                return redirect()->route('account')->with('error', 'A senha não pode ser alterada para usuários com login externo.');
+            }
+    
+            $user->password = Hash::make($request->password);
+        }
+    
+        $user->save();
+    
+        return redirect()->route('account')->with('success', 'Dados da conta atualizados com sucesso.');
+    }
+    
+    public function destroyAccountData(Request $request)
+    {
+        $user = Auth::user();
+    
+        $user->delete();
+    
+        $user->emporiums()->delete();
+        $user->supermarketLists()->delete();
+    
+        return redirect()->route('home')->with('success', 'Conta excluída com sucesso.');
     }
 }
