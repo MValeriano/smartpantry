@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @OA\Tag(name="Profile")
@@ -30,6 +31,10 @@ class ProfileController extends Controller
     public function index()
     {
         $profiles = Profile::all(); // Obter todos os perfis cadastrados
+        $user = Auth::user(); 
+
+        if($user->profile_id <> 1)
+            return view('profiles.reservedarea');
 
         return view('profiles.index', ['profiles' => $profiles]);
     }

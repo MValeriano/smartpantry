@@ -11,11 +11,11 @@ tags:
 
 - PHP
 - Laravel
-- Postgres
+- postgresql
 
 # SmartPantry
 
-## Trabalho de Conclusão de Curso
+## Trabalho de Conclusão de Curso - Pós-graduação Lato Sensu em Desenvolvimento Web Full Stack - PUC-MINAS
 
 Este projeto é um trabalho de conclusão de curso para o curso de Pós-graduação Lato Sensu em Desenvolvimento Web Full Stack - PUC-MINAS intitulado "SmartPantry - Um Sistema Inteligente de Gerenciamento de Despensa" desenvolvido por Marcelo Valeriano.
 

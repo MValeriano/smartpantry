@@ -7,6 +7,7 @@ use App\Models\GeoreferencingAddress;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @OA\Tag(name="Emporiums")
@@ -32,6 +33,11 @@ class EmporiumController extends Controller
     public function index()
     {
         $emporiums = Emporium::all();
+
+        $user = Auth::user(); 
+
+        if($user->profile_id <> 2)
+            return view('emporiums.reservedarea');
 
         return view('emporiums.index', compact('emporiums'));
     }

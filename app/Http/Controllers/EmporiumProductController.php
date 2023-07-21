@@ -7,6 +7,7 @@ use App\Models\Emporium;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @OA\Tag(name="Emporium Product")
@@ -34,8 +35,12 @@ class EmporiumProductController extends Controller
     public function index()
     {
         $emporiums = Emporium::with('products')->get();
-    
-        return view('partnersproducts.index', compact('emporiums'));
+        $user = Auth::user(); 
+
+        if(($user->profile_id === 1) || ($user->profile_id === 2) )
+            return view('partnersproducts.index', compact('emporiums'));
+        else
+            return view('partnersproducts.reservedarea');
     }
     
     /**

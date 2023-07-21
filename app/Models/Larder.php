@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Larder extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id'
+    ];
     
     public function products()
     {

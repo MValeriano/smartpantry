@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Larder;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LarderController extends Controller
 {
@@ -15,7 +16,9 @@ class LarderController extends Controller
      */
     public function index()
     {
-        $larderItems = Larder::with('products')->paginate(5);
+        $user = Auth::user();
+
+        $larderItems = Larder::where( 'user_id', $user->id )->with('products')->paginate(5);
         
         return view('larders.index', compact('larderItems'));
     }
@@ -46,7 +49,16 @@ class LarderController extends Controller
             'expiration_date' => 'required|date',
         ]);
 
-        $larder = Larder::create();
+        $user = Auth::user();
+
+        $larder = Larder::where('user_id', $user->id)->first();
+        
+        if (!$larder) {
+            $larder = Larder::create([
+                'user_id' => $user->id,
+            ]);
+        }
+
         $larder->products()->attach($request->product_id, [
             'quantity' => $request->quantity,
             'expiration_date' => $request->expiration_date,

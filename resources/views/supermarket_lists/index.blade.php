@@ -18,7 +18,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Produto</th>         
+                                        <th>Lista</th>         
                                         <th>Valor Total da lista</th>
                                         <th class="text-center">Ações</th>
                                     </tr>

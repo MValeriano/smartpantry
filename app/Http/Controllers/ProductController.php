@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use OpenApi\Annotations as OA;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @OA\Tag(name="Product")
@@ -32,6 +33,12 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with('category')->paginate(10);
+
+        $user = Auth::user(); 
+
+        if($user->profile_id <> 1)
+            return view('products.reservedarea');
+
         return view('products.index', compact('products'));
     }
 

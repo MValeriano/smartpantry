@@ -41,7 +41,7 @@
                                 <input type="text" list="products" class="form-control" id="product">
                                 <datalist id="products">
                                     @foreach ($products as $product)
-                                        <option value="{{ $product->id }}">{{ $product->product_name }}</option>
+                                        <option value="{{ $product->product_name }}">{{ $product->product_name }}</option>
                                     @endforeach
                                 </datalist>
                             </div>
@@ -93,8 +93,9 @@
             const products = {!! json_encode($products) !!};
 
             addProductButton.addEventListener('click', function () {
-                const productId = productInput.value;
-                const productName = getProductById(productId).product_name;
+                
+                const productName = productInput.value;
+                const productId = getProductByName(productName).id;
                 const quantity = quantityInput.value;
 
                 const row = document.createElement('tr');
@@ -116,8 +117,8 @@
                 quantityInput.value = '';
             });
 
-            function getProductById(productId) {
-                return products.find(product => product.id === parseInt(productId));
+            function getProductByName(productName) {
+                return products.find(product => product.product_name === productName);
             }
         });
 

@@ -6,7 +6,7 @@
         <div class="card" style="width: 100rem;">
             <div class="card-body p-5">
 
-                <h2>Despensa</h2>
+                <h2>Minha Despensa</h2>
                 
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -42,20 +42,23 @@
                                 <tbody>
 
                                 @foreach ($larderItems as $larder)
+                                    @foreach ($larder->products as $product)
                                         <tr>
-                                            <td style="width: 5%;">{{ $larder->products->first()->product_name }}</td>
-                                            <td style="width: 20%;">{{ $larder->products->first()->pivot->quantity  }}</td>
-                                            <td style="width: 55%;">{{ $larder->products->first()->pivot->expiration_date  }}</td>
+                                            <td style="width: 40%;">{{ $product->product_name }}</td>
+                                            <td style="width: 20%;">{{ $product->pivot->quantity }}</td>
+                                            <td style="width: 20%;">{{ $product->pivot->expiration_date }}</td>
                                             <td style="width: 20%;">
-                                            <a href="{{ route('larders.edit', $larder->id) }}" class="btn btn-sm btn-primary">Editar</a>
-                                            <form action="{{ route('larders.destroy', $larder->id) }}" method="POST" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Deseja excluir este item da despensa?')">Excluir</button>
-                                            </form>
+                                                <a href="{{ route('larders.edit', $larder->id) }}" class="btn btn-sm btn-primary">Editar</a>
+                                                <form action="{{ route('larders.destroy', $larder->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Deseja excluir este item da despensa?')">Excluir</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
+                                @endforeach
+
                                 </tbody>
                             </table>
                             <nav aria-label="Navegação da página da despensa">
