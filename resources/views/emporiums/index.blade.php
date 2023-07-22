@@ -41,6 +41,9 @@
     <div class="row mb-3">
         <div class="col-md-12 text-end">
             <a href="{{ route('emporiums.create') }}" class="btn btn-outline-primary">Criar Parceiro</a>
+            <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+                Sair
+            </a>                  
         </div>
     </div>
 

@@ -6,7 +6,7 @@
             <div class="card" style="width: 100rem;">
                 <div class="card-body p-5">
 
-                    <h1>Produtos do Parceiro: {{ $emporiums[0]->name }}</h1>   
+                    <h1>Produtos do Parceiro : {{ $emporiums[0]->name }}</h1>   
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -32,7 +32,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Nome</th>
-                                        <th class="text-center">Ações</th>
+                                        <th class="text-center"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,7 +42,7 @@
                                                 <td style="width: 60%;">{{ $emporium->name }}</td>
                                                 <td style="width: 35%;">
                                                     <a href="{{ route('EmporiumProduct.create', ['emporium' => $emporium->id]) }}" class="btn btn-outline-primary">Adicionar Produtos</a>
-                                                    <a href="{{ route('emporiums.edit', ['emporium' => $emporium->id]) }}" class="btn btn-outline-primary">Editar</a>
+                                                    <a href="{{ route('EmporiumProduct.show', ['emporium' => $emporium->id]) }}" class="btn btn-outline-primary">Editar</a>
                                                     <form action="{{ route('EmporiumProduct.destroy', ['emporium' => $emporium->id]) }}" method="POST" style="display: inline">
                                                         @csrf
                                                         @method('DELETE')
@@ -55,6 +55,13 @@
                             </table>
                         </div>
                     </div>
+                    
+                    <div class="text-end mt-3">
+                        <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+                            Sair
+                        </a>                    
+                    </div> 
+
                 </div>
             </div>
         </div>        

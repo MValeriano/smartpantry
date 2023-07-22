@@ -122,6 +122,12 @@
                     </div>
                 </div>
 
+                <div class="text-end mt-3">
+                    <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+                        Sair
+                    </a>                    
+                </div>                
+
             </div>
         </div>
     </div>

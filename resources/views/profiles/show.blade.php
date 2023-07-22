@@ -1,5 +1,3 @@
-<!-- resources/views/profiles/show.blade.php -->
-
 @extends('home')
 
 @section('content')

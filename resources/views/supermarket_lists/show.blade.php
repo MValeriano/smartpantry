@@ -37,9 +37,12 @@
                         </div>
                     <div class="card-footer">
                         <div class="text-end my-4">
-                            <button onclick="exportToPdf()">Exportar para PDF</button>
-                            <button class="mx-2" disabled>Compartilhar Lista</button>
-                            <button onclick="concludeList()">Concluir Lista</button>
+                            <button onclick="exportToPdf()" class="btn btn-outline-primary mx-1">Exportar para PDF</button>
+                            <button class="btn btn-outline-primary mx-1" disabled>Compartilhar Lista</button>
+                            <button onclick="concludeList()" class="btn btn-outline-success mx-2">Concluir Lista</button>
+                            <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+                                Sair
+                            </a>                                
                         </div>
                     </div>
 

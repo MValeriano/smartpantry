@@ -30,7 +30,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profiles = Profile::all(); // Obter todos os perfis cadastrados
+        $profiles = Profile::all();
         $user = Auth::user(); 
 
         if($user->profile_id <> 1)

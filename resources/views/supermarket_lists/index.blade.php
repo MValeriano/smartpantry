@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="col-lg-10 col-md-9 content">
-<div class="container d-flex justify-content-center">
-        <div class="card">
+    <div class="container d-flex justify-content-center">
+        <div class="card" style="width: 100rem;">
             <div class="card-body p-5">
 
-                <h1 class="text-center"><i class="fas fa-tasks text-success"  --bs-success-bg-subtle></i><span class="menu-text">  Minhas listas </span></h1>
+                <h1 class="text-center"><span class="menu-text">  Minhas listas </span></h1>
                 
                 <div class="card mt-3">
                     <div class="card-body">  
@@ -79,6 +79,9 @@
                 </div>
                 <div class="text-end mt-3">
                     <a href="{{ route('supermarket_lists.create') }}" class="btn btn-outline-primary">Criar Nova Lista de Compras</a>
+                    <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+                        Sair
+                    </a>                    
                 </div>
         </div>
     </div>

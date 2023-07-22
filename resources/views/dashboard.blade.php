@@ -98,10 +98,8 @@
     </div>
 </div>
 
-<!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
 <script>
-    // Configuração do gráfico de compras
     var ctxCompras = document.getElementById('chartCompras').getContext('2d');
     var chartCompras = new Chart(ctxCompras, {
         type: 'line',

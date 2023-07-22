@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-lg-10 col-md-9 content">
     <div class="container d-flex justify-content-center">
-        <div class="card">
+        <div class="card" style="width: 100rem;">
             <div class="card-body p-5">
                 <h1 class="pb-5">Criar Lista de Compras</h1>
 

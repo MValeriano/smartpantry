@@ -82,6 +82,9 @@
             </div>
             <div class="text-end">
                 <a href="{{ route('products.create') }}" class="btn btn-outline-primary">Criar Novo Produto</a>
+                <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+                    Sair
+                </a>                 
             </div>
         </div>
     </div>

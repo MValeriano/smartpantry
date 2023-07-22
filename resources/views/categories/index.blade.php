@@ -91,8 +91,11 @@
                         @endif
                     </div>
                 </div>
-                <div class="text-end">
-                    <a href="{{ route('categories.create') }}" class="btn btn-outline-primary mt-4">Criar Categoria</a>
+                <div class="text-end  mt-4">
+                    <a href="{{ route('categories.create') }}" class="btn btn-outline-primary">Criar Categoria</a>
+                    <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+                        Sair
+                    </a>                      
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ body {
   margin-bottom: 10px;
 }
 
-.link_envio a {
+.link_envio {
   color: #fff;
   text-decoration: none;
   display: block;
@@ -26,7 +26,7 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.link_envio a:hover {
+.link_envio:hover {
   background-color: #273947;
 }
 

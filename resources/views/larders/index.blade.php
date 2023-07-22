@@ -36,7 +36,7 @@
                                     <th>Produto</th>
                                     <th>Quantidade</th>
                                     <th>Data de Validade</th>
-                                    <th>Ações</th>
+                                    <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,10 +44,9 @@
                                 @foreach ($larderItems as $larder)
                                         <tr>
                                             <td style="width: 40%;">{{ $larder->product_name }}</td>
-                                            <td style="width: 20%;">{{ $larder->quantity }}</td>
-                                            <td style="width: 20%;">{{ $larder->expiration_date }}</td>
-                                            <td style="width: 20%;">
-                                                <a href="{{ route('larders.edit', $larder->id) }}" class="btn btn-sm btn-outline-primary">Editar</a>
+                                            <td style="width: 25%;">{{ $larder->quantity }}</td>
+                                            <td style="width: 25%;">{{ $larder->expiration_date }}</td>
+                                            <td style="width: 10%;">
                                                 <form action="{{ route('larders.destroy', $larder->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
@@ -93,8 +92,11 @@
                         @endif
                     </div>
                 </div>
-                <div class="text-end">
-                    <a href="{{ route('larders.create') }}" class="btn btn-outline-primary mt-4">Adicionar Item à Despensa</a>
+                <div class="text-end mt-4">
+                    <a href="{{ route('larders.create') }}" class="btn btn-outline-primary">Adicionar Item à Despensa</a>
+                    <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+                        Sair
+                    </a>
                 </div>
             </div>
         </div>
