@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(SupermarketList::class);
     }
+
+    public function larders()
+    {
+        return $this->hasMany(Larder::class);
+    }
 }

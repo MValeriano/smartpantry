@@ -55,7 +55,7 @@
                         </div>
                     </div>        
                     <div class="text-end mt-4">
-                        <button form="form" type="submit" class="btn btn-primary">Atualizar Item</button>
+                        <button form="form" type="submit" class="btn btn-outline-primary">Atualizar Item</button>
                     </div>
 
                 </div>

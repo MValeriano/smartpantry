@@ -40,7 +40,7 @@
                     </tbody>
                 </table>
             </div>
-            <button type="submit" class="btn btn-primary">Atualizar Lista</button>
+            <button type="submit" class="btn btn-outline-primary">Atualizar Lista</button>
         </form>
     </div>
 </div>

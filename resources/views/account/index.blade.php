@@ -19,6 +19,14 @@
                     </div>
                 @endif
 
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            {{ session('error') }}
+                        </ul>
+                    </div>
+                @endif
+
                 @if (session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -47,38 +55,47 @@
                                 <label for="password_confirmation" class="form-label">Repetir Senha</label>
                                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Alterar</button>
+                            <button type="submit" class="btn btn-outline-primary">Alterar</button>
                         </form>
                     </div>
                 </div>
+
+                @if ($user->profile_id === 1)
+                    <div class="card my-5">
+                        <div class="card-body p-5">
+                            <h2 class="pb-3">Atribuir perfil ao usuário</h2>
+
+                            <form action="{{ route('account.assignProfile') }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="user" class="form-label">Selecione o Usuário</label>
+                                    <select class="form-select" id="user" name="user" required>
+                                        <option value="" selected disabled>Selecione...</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>                                
+                                <div class="mb-3">
+                                    <label for="profile" class="form-label">Selecione o perfil</label>
+                                    <select class="form-select" id="profile" name="profile" required>
+                                        <option value="" selected disabled>Selecione...</option>
+                                        @foreach ($profiles as $profile)
+                                            <option value="{{ $profile->id }}">{{ $profile->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-outline-primary">Atribuir perfil</button>
+                            </form>
+                        </div>
+                    </div>
+                @endif
 
                 <div class="card my-5">
                     <div class="card-body p-5">
-                        <h2 class="pb-3">Atribuir perfil ao usuário</h2>
-
-                        <form action="{{ route('account.assignProfile') }}" method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="profile" class="form-label">Selecione o perfil</label>
-                                <select class="form-select" id="profile" name="profile" required>
-                                    <option value="" selected disabled>Selecione...</option>
-                                    @foreach ($profiles as $profile)
-                                        <option value="{{ $profile->id }}">{{ $profile->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Atribuir perfil</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card">
-                        <div class="card-body p-5">
-                            <h2 class="pb-3">Excluir conta</h2>
-                            <p>Ao excluir sua conta, todo o histórico de listas e despensa será apagado. Essa ação não poderá ser desfeita.</p>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Excluir conta</button>
-                        </div>
+                        <h2 class="pb-3">Excluir conta</h2>
+                        <p>Ao excluir sua conta, todo o histórico de listas e despensa será apagado. Essa ação não poderá ser desfeita.</p>
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Excluir conta</button>
                     </div>
                 </div>
 
@@ -94,11 +111,11 @@
                                 <p>Deseja continuar?</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <form action="{{ route('account.destroy') }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Excluir conta</button>
+                                    <button type="submit" class="btn btn-outline-danger">Excluir conta</button>
                                 </form>
                             </div>
                         </div>

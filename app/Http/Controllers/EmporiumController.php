@@ -36,10 +36,11 @@ class EmporiumController extends Controller
 
         $user = Auth::user(); 
 
-        if($user->profile_id <> 2)
+        if($user->profile_id == 2 || $user->profile_id == 1)
+            return view('emporiums.index', compact('emporiums'));
+        else    
             return view('emporiums.reservedarea');
-
-        return view('emporiums.index', compact('emporiums'));
+        
     }
 
     /**

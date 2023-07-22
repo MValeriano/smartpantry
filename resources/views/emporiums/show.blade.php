@@ -13,7 +13,7 @@
             <p><strong>Coordenadas:</strong> {{ $emporium->georeferencingAddress->x_coordinate}}, {{ $emporium->georeferencingAddress->y_coordinate }}</p>
         </div>
         <div class="card-footer">
-            <a href="{{ route('emporiums.index') }}" class="btn btn-secondary">Voltar</a>
+            <a href="{{ route('emporiums.index') }}" class="btn btn-outline-secondary">Voltar</a>
         </div>
     </div> 
 </div>

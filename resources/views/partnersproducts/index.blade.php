@@ -41,12 +41,12 @@
                                                 <td style="width: 5%;">{{ $emporium->id }}</td>
                                                 <td style="width: 60%;">{{ $emporium->name }}</td>
                                                 <td style="width: 35%;">
-                                                    <a href="{{ route('EmporiumProduct.create', ['emporium' => $emporium->id]) }}" class="btn btn-primary">Adicionar Produtos</a>
-                                                    <a href="{{ route('emporiums.edit', ['emporium' => $emporium->id]) }}" class="btn btn-primary">Editar</a>
+                                                    <a href="{{ route('EmporiumProduct.create', ['emporium' => $emporium->id]) }}" class="btn btn-outline-primary">Adicionar Produtos</a>
+                                                    <a href="{{ route('emporiums.edit', ['emporium' => $emporium->id]) }}" class="btn btn-outline-primary">Editar</a>
                                                     <form action="{{ route('EmporiumProduct.destroy', ['emporium' => $emporium->id]) }}" method="POST" style="display: inline">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                                        <button type="submit" class="btn btn-outline-danger">Excluir</button>
                                                     </form>
                                                 </td>
                                             </tr>

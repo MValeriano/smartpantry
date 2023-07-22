@@ -59,8 +59,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="text-end">
-                            <button type="submit" form="envioProduto" class="btn btn-primary">Criar Produto</button>                                        
-                            <a href="{{ route('products.index') }}" class="btn btn-secondary">Voltar</a>
+                            <button type="submit" form="envioProduto" class="btn btn-outline-primary">Criar Produto</button>                                        
+                            <a href="{{ route('products.index') }}" class="btn btn-outline-secondary">Voltar</a>
                         <div> 
                     </div>
                 </div>                

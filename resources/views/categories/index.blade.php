@@ -45,11 +45,11 @@
                                             <td style="width: 20%;">{{ $category->category_name }}</td>
                                             <td style="width: 55%;">{{ $category->category_description }}</td>
                                             <td style="width: 20%;">
-                                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary">Editar</a>
+                                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-outline-primary">Editar</a>
                                                 <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display: inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                                    <button type="submit" class="btn btn-outline-danger">Excluir</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <div class="text-end">
-                    <a href="{{ route('categories.create') }}" class="btn btn-primary mt-4">Criar Categoria</a>
+                    <a href="{{ route('categories.create') }}" class="btn btn-outline-primary mt-4">Criar Categoria</a>
                 </div>
             </div>
         </div>

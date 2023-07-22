@@ -60,8 +60,8 @@
                 <div class="row">
                             <div class="col">
                                 <div class="text-end">
-                                    <button type="submit" form="formProduto" class="btn btn-primary">Atualizar Produto</button>
-                                    <a href="{{ route('products.index') }}" class="btn btn-secondary">Voltar</a>
+                                    <button type="submit" form="formProduto" class="btn btn-outline-primary">Atualizar Produto</button>
+                                    <a href="{{ route('products.index') }}" class="btn btn-outline-secondary">Voltar</a>
                                 <div> 
                 </div>                       
             </div>

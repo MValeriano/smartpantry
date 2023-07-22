@@ -42,21 +42,19 @@
                                 <tbody>
 
                                 @foreach ($larderItems as $larder)
-                                    @foreach ($larder->products as $product)
                                         <tr>
-                                            <td style="width: 40%;">{{ $product->product_name }}</td>
-                                            <td style="width: 20%;">{{ $product->pivot->quantity }}</td>
-                                            <td style="width: 20%;">{{ $product->pivot->expiration_date }}</td>
+                                            <td style="width: 40%;">{{ $larder->product_name }}</td>
+                                            <td style="width: 20%;">{{ $larder->quantity }}</td>
+                                            <td style="width: 20%;">{{ $larder->expiration_date }}</td>
                                             <td style="width: 20%;">
-                                                <a href="{{ route('larders.edit', $larder->id) }}" class="btn btn-sm btn-primary">Editar</a>
+                                                <a href="{{ route('larders.edit', $larder->id) }}" class="btn btn-sm btn-outline-primary">Editar</a>
                                                 <form action="{{ route('larders.destroy', $larder->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Deseja excluir este item da despensa?')">Excluir</button>
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Deseja excluir este item da despensa?')">Excluir</button>
                                                 </form>
                                             </td>
                                         </tr>
-                                    @endforeach
                                 @endforeach
 
                                 </tbody>
@@ -96,7 +94,7 @@
                     </div>
                 </div>
                 <div class="text-end">
-                    <a href="{{ route('larders.create') }}" class="btn btn-primary mt-4">Adicionar Item à Despensa</a>
+                    <a href="{{ route('larders.create') }}" class="btn btn-outline-primary mt-4">Adicionar Item à Despensa</a>
                 </div>
             </div>
         </div>

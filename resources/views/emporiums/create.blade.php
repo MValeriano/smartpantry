@@ -80,9 +80,9 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-12 text-end">
-                        <button type="submit" class="btn btn-primary mt-4">Criar Parceiro</button>
-                        <button type="reset" class="btn btn-secondary mt-4">Limpar</button>
-                        <a href="{{ route('emporiums.index') }}" class="btn btn-secondary mt-4">Voltar</a>
+                        <button type="submit" class="btn btn-outline-primary mt-4">Criar Parceiro</button>
+                        <button type="reset" class="btn btn-outline-secondary mt-4">Limpar</button>
+                        <a href="{{ route('emporiums.index') }}" class="btn btn-outline-secondary mt-4">Voltar</a>
                     </div>
                 </div>                        
             </form>

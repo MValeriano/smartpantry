@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Larder;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @OA\Tag(name="Home")
@@ -30,17 +32,28 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        
         $totalProducts = Product::count();
 
-        $totalCategories = Category::count();
+        $totalCategories = Category::count();        
+        
+        $itemsDespensa = Product::whereHas('larders', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->with(['larders' => function ($query) use ($user) {
+            $query->where('user_id', $user->id)->select('larders_products.id', 'quantity', 'expiration_date');
+        }])->count();
 
-        $itemsDespensa = 50;
+        $Productspertofim = Product::whereHas('larders', function ($query) use ($user) {
+            $query->where('user_id', $user->id)
+                ->whereDate('expiration_date', '<=', now()->addDays(5));
+        })->count();
 
-        $Productspertofim = 5;
+        $Produtosavencer = Product::whereHas('larders', function ($query) use ($user) {
+            $query->where('user_id', $user->id)
+                ->whereDate('expiration_date', '>', now());
+        })->count();        
 
-        $Produtosavencer = 10;
-
-        // Dados para o gráfico de produtos por categoria
         $categories = Category::withCount('products')->get();
         $categoryNames = $categories->pluck('category_name')->toArray();
         $categoryQuantities = $categories->pluck('products_count')->toArray();

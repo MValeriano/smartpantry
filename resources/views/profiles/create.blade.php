@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Criar Perfil') }}</div>
+                    <div class="card-header">Criar Perfil</div>
 
                     <div class="card-body">
                         @if (session('message'))
@@ -19,9 +19,9 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                                <label for="name" class="col-md-2 col-form-label text-md-right">Nome</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-7">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                     @error('name')
@@ -30,24 +30,22 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Criar') }}
+                                <div class="col-md-1 text-start">
+                                    <button type="submit" class="btn btn-outline-primary px-5">
+                                        Criar
                                     </button>
                                 </div>
                             </div>
                         </form>
 
                         <div class="mt-4">
-                            <h4>{{ __('Perfis existentes') }}</h4>
+                            <h4>Perfis existentes</h4>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>{{ __('Nome') }}</th>
-                                        <th>{{ __('Ações') }}</th>
+                                        <th>Nome</th>
+                                        <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,11 +53,11 @@
                                         <tr>
                                             <td>{{ $profile->name }}</td>
                                             <td>
-                                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-sm btn-primary">{{ __('Alterar') }}</a>
+                                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-sm btn-outline-primary">Alterar</a>
                                                 <form action="{{ route('profiles.destroy', $profile->id) }}" method="POST" style="display: inline-block;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{{ __('Tem certeza que deseja excluir este perfil?') }}')">{{ __('Excluir') }}</button>
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Tem certeza que deseja excluir este perfil?')">Excluir</button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -35,18 +35,26 @@ class UserController extends Controller
     public function setAccountData(Request $request){
         $user = Auth::user();
         $profiles = Profile::all();
-        return view('account.index', compact('user','profiles'));
+        $users = User::all();
+        return view('account.index', compact('user','profiles','users'));
     }
 
     public function assignProfile(Request $request)
     {
         $request->validate([
+            'user' => 'required|exists:users,id',
             'profile' => 'required|exists:profiles,id',
         ]);
     
+        $userId = $request->input('user');
         $profileId = $request->input('profile');
+
+        if (auth()->user()->profile_id !== 1) {
+            return redirect()->route('account')->with('error', 'Você não tem permissão para atribuir perfis a outros usuários.');
+        }        
     
-        $user = auth()->user();
+        $user = User::findOrFail($userId);
+        
         $user->profile_id = $profileId;
         $user->save();
     

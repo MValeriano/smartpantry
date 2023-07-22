@@ -22,11 +22,11 @@
                         <td>{{ $product->product_description }}</td>
                         <td>{{ $product->product_weight }} {{ $product->measurement_units }}</td>
                         <td>
-                            <a href="{{ route('EmporiumProduct.edit', ['emporium' => $emporium->id, 'product' => $product->id]) }}" class="btn btn-primary">Editar</a>
+                            <a href="{{ route('EmporiumProduct.edit', ['emporium' => $emporium->id, 'product' => $product->id]) }}" class="btn btn-outline-primary">Editar</a>
                             <form action="{{ route('EmporiumProduct.destroy', ['emporium' => $emporium->id, 'product' => $product->id]) }}" method="POST" style="display: inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Excluir</button>
+                                <button type="submit" class="btn btn-outline-danger">Excluir</button>
                             </form>
                         </td>
                     </tr>
@@ -34,6 +34,6 @@
             </tbody>
         </table>
 
-        <a href="{{ route('EmporiumProduct.create', ['emporium' => $emporium->id]) }}" class="btn btn-primary">Adicionar Produto</a>
+        <a href="{{ route('EmporiumProduct.create', ['emporium' => $emporium->id]) }}" class="btn btn-outline-primary">Adicionar Produto</a>
     </div>
 @endsection

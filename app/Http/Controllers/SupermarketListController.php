@@ -42,7 +42,8 @@ class SupermarketListController extends Controller
 
     public function index()
     {
-        $user = Auth::user();    
+        $user = Auth::user();
+
         $supermarketLists  = SupermarketList::where( 'user_id', $user->id )->paginate(5); 
         return view('supermarket_lists.index', compact('supermarketLists'));
 

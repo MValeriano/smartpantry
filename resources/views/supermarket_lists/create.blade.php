@@ -54,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary my-3" id="add_product">Adicionar Produto à Lista</button>
+                    <button type="button" class="btn btn-outline-primary my-3" id="add_product">Adicionar Produto à Lista</button>
 
                     <div class="card mb-3">
                         <div class="card-body">
@@ -71,11 +71,12 @@
                             </table>      
                         </div>                         
                     </div>
+                    
                     <div class="row mb-3">
                         <div class="col-md-12 text-end">
-                            <button type="submit" class="btn btn-primary mt-4">Criar Lista de Compras</button>
-                            <button type="reset" class="btn btn-secondary mt-4">Limpar</button>
-                            <a href="{{ route('supermarket_lists.index') }}" class="btn btn-secondary mt-4">Voltar</a>
+                            <button type="submit" class="btn btn-outline-primary mt-4">Criar Lista de Compras</button>
+                            <button type="reset" class="btn btn-outline-secondary mt-4">Limpar</button>
+                            <a href="{{ route('supermarket_lists.index') }}" class="btn btn-outline-secondary mt-4">Voltar</a>
                         </div>
                     </div>   
                 </form>
@@ -106,7 +107,7 @@
                     <td>
                         <input type="hidden" name="product_id[]" value="${productId}">
                         <input type="hidden" name="product_quantity[]" value="${quantity}">
-                        <button type="button" class="btn btn-danger btn-sm" onclick="removeProduct(this)">Remover</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeProduct(this)">Remover</button>
                     </td>
                 </tr>
                 `;

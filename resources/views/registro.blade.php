@@ -38,8 +38,7 @@
           <input type="password" name="password" placeholder="Senha" required>
           <button type="submit" class="register-button">Registrar</button>
         </form>
-
-        <p class="login-link">Já possui uma conta? <a href="{{ route('login') }}">Faça login</a></p>
+        <p class="login-link my-3 font-monospace text-muted">Já possui uma conta? <a class="text-reset text-decoration-underline" href="{{ route('login') }}"><strong>Faça login</strong></a></p>
       </div>
     </div>
     </div>  

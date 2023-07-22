@@ -40,7 +40,7 @@
                             </form>
                             <div class="card-footer mt-2">
                                 <div class="text-end my-1">
-                                    <button form="form" type="submit" class="btn btn-primary">Adicionar Produto</button>
+                                    <button form="form" type="submit" class="btn btn-outline-primary">Adicionar Produto</button>
                                 </div>
                             </div>
                         </div>

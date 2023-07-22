@@ -6,7 +6,6 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use OpenApi\Annotations as OA;
-
 /**
  * @OA\Info(
  *     title="SmartPantry",
@@ -36,7 +35,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(5);
-        return view('categories.index', compact('categories'));       
+        return view('categories.index', compact('categories'));     
     }
 
     public function create()

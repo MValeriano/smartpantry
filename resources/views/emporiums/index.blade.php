@@ -26,11 +26,11 @@
                                     <p><strong>CEP:</strong> {{ $emporium->georeferencingAddress->address->address_zipcode }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="{{ route('emporiums.edit', $emporium->id) }}" class="btn btn-primary">Editar</a>
+                                    <a href="{{ route('emporiums.edit', $emporium->id) }}" class="btn btn-outline-primary">Editar</a>
                                     <form action="{{ route('emporiums.destroy', $emporium->id) }}" method="POST" style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                        <button type="submit" class="btn btn-outline-danger">Excluir</button>
                                     </form>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
             </div>
     <div class="row mb-3">
         <div class="col-md-12 text-end">
-            <a href="{{ route('emporiums.create') }}" class="btn btn-primary">Criar Parceiro</a>
+            <a href="{{ route('emporiums.create') }}" class="btn btn-outline-primary">Criar Parceiro</a>
         </div>
     </div>
 

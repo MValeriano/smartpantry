@@ -30,11 +30,11 @@
                                             <td>{{ $supermarketList->list_name }}</td>
                                             <td class="text-center">{{ $supermarketList->supermarket_list_price_total }}</td>
                                             <td>
-                                                <a href="{{ route('supermarket_lists.show', $supermarketList->id) }}" class="btn btn-primary">Editar</a>                                           
+                                                <a href="{{ route('supermarket_lists.show', $supermarketList->id) }}" class="btn btn-outline-primary">Editar</a>                                           
                                                 <form action="{{ route('supermarket_lists.destroy', $supermarketList->id) }}" method="POST" style="display: inline-block;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                                    <button type="submit" class="btn btn-outline-danger">Excluir</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="text-end mt-3">
-                    <a href="{{ route('supermarket_lists.create') }}" class="btn btn-primary">Criar Nova Lista de Compras</a>
+                    <a href="{{ route('supermarket_lists.create') }}" class="btn btn-outline-primary">Criar Nova Lista de Compras</a>
                 </div>
         </div>
     </div>

@@ -71,8 +71,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="text-end">
-                            <a href="{{ route('supermarket_lists.index') }}" class="btn btn-secondary">Voltar</a>
-                            <button type="submit" form="formLista" class="btn btn-primary">Salvar</button>  
+                            <a href="{{ route('supermarket_lists.index') }}" class="btn btn-outline-secondary">Voltar</a>
+                            <button type="submit" form="formLista" class="btn btn-outline-primary">Salvar</button>  
                         </div>                              
                     <div> 
                 </div>                          

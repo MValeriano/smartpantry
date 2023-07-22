@@ -18,13 +18,4 @@ class LarderProduct extends Model
         'expiration_date',
     ];
 
-    public function product()
-    {
-        return $this->belongsTo(Product::class,'larders_products', 'product_id', 'larder_id');
-    }
-
-    public function larder()
-    {
-        return $this->belongsTo(Larder::class,'larders_products', 'larder_id', 'product_id');
-    }     
 }

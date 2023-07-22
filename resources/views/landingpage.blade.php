@@ -32,8 +32,8 @@
             <a class="nav-link" href="#partners">Parceiros</a>
           </li>
         </ul>
-        <a class="btn btn-primary mr-2" href="{{ route('login') }}">Login</a>
-        <a class="btn btn-secondary" href="{{ route('showRegistrationForm') }}">Registrar</a>
+        <a class="btn btn-outline-primary mr-2" href="{{ route('login') }}">Login</a>
+        <a class="btn btn-outline-secondary" href="{{ route('showRegistrationForm') }}">Registrar</a>
       </div>
     </nav>
     <div class="header-content">
@@ -124,7 +124,7 @@
 				  <li>Notificações de vencimento</li>
 				  <li>Lista de compras simplificada</li>
 				</ul>
-				<a href="#" class="btn btn-primary btn-block">Escolher</a>
+				<a href="#" class="btn btn-outline-primary btn-block">Escolher</a>
 			  </div>
 			</div>
 		  </div>
@@ -150,7 +150,7 @@
 				  <li>Personalização de categorias</li>
 				  <li>Relatórios e insights</li>
 				</ul>
-				<a href="#" class="btn btn-primary btn-block">Escolher</a>
+				<a href="#" class="btn btn-outline-primary btn-block">Escolher</a>
 			  </div>
 			</div>
 		  </div>
@@ -176,7 +176,7 @@
 				  <li>Compartilhamento de despensas</li>
 				  <li>Notificações personalizadas</li>
 				</ul>
-				<a href="#" class="btn btn-primary btn-block">Escolher</a>
+				<a href="#" class="btn btn-outline-primary btn-block">Escolher</a>
 			  </div>
 			</div>
 		  </div>

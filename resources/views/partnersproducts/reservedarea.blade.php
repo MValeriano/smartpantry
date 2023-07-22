@@ -13,7 +13,7 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-md-12 text-end">
-                    <a href="{{ route('home') }}" class="btn btn-secondary">Voltar</a>
+                    <a href="{{ route('home') }}" class="btn btn-outline-secondary">Voltar</a>
                 </div>
             </div>
         </div>
